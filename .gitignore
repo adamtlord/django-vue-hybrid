@@ -5,6 +5,6 @@ uploads/
 .DS_Store
 MANIFEST
 dist
-
+.env
 node_modules
 *.log
