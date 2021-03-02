@@ -1,0 +1,4 @@
+/* Just an example */
+footer {
+  @apply bg-green-800 text-gray-50;
+}

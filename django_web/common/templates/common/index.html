@@ -5,8 +5,8 @@
     <noscript>
         <strong>Please enable JavaScript to continue.</strong>
     </noscript>
-    <div id="app">Protect ya neck</div>
-    <div style="background-color: blueviolet; color: white; font-family: monospace; font-size: 1.5rem; padding: .5rem 1rem;">
+    <div id="app">There was a problem loading Vue</div>
+    <footer class="font-mono text-xl py-2 px-4">
         <p>Django context:</p>
         <ul>
             <li>user: {{ request.user }}</li>
@@ -14,7 +14,7 @@
             {% for key, value in extra_context.items %}
         <li>{{ key }}: {{ value }}</li>
         {% endfor %}</ul>
-    </div>
+    </footer>
 {% endblock %}
 {% block bundlescripts %}
     {% render_bundle 'main' attrs="rel=preload" %}

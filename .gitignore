@@ -7,3 +7,4 @@ MANIFEST
 dist
 
 node_modules
+*.log
