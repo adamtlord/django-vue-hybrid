@@ -25,6 +25,6 @@ COPY poetry.lock pyproject.toml /code/
 RUN source $HOME/.poetry/env && poetry config virtualenvs.create false && poetry install --no-interaction --no-ansi
 
 RUN yarn global add @vue/cli
-
+RUN yarn install
 ## Dev image, for use during local development
 FROM base AS dev
