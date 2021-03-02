@@ -19,8 +19,6 @@ services:
       context: ./django_web
       target: dev
       dockerfile: ./Dockerfile
-      args:
-        requirements_file: "base.txt"
     ports:
       - "8010:8000"
       - "8080:8080"
