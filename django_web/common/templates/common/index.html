@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block body %}
+    <noscript>
+        <strong>Please enable JavaScript to continue.</strong>
+    </noscript>
+    <div id="app">Protect ya neck</div>
+    <div style="background-color: blueviolet; color: white; font-family: monospace; font-size: 1.5rem; padding: .5rem 1rem;">
+        <p>Django context:</p>
+        <ul>
+            <li>user: {{ request.user }}</li>
+            <li>path: {{ request.path }}</li>
+            {% for key, value in extra_context.items %}
+        <li>{{ key }}: {{ value }}</li>
+        {% endfor %}</ul>
+    </div>
+{% endblock %}
+{% block bundlescripts %}
+    {% render_bundle 'main' attrs="rel=preload" %}
+    {% render_bundle 'about' attrs="rel=preload" %}
+    {% render_bundle 'chunk-vendors' attrs="rel=preload" %}
+{% endblock %}

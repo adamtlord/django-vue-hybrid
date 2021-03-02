@@ -1,0 +1,9 @@
+build/
+uploads/
+*.pyc
+*.swp
+.DS_Store
+MANIFEST
+dist
+
+node_modules
