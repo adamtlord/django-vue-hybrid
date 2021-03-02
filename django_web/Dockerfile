@@ -11,7 +11,7 @@ RUN apk add --upgrade --no-cache py-pip g++ linux-headers gcc make libffi-dev uw
 
 RUN apk add --upgrade --no-cache python3 python3-dev
 
-RUN apk add npm yarn
+RUN apk add --upgrade npm yarn
 ENV WAITFORIT_VERSION="v2.2.0"
 RUN curl -o /usr/local/bin/waitforit -sSL https://github.com/maxcnunes/waitforit/releases/download/$WAITFORIT_VERSION/waitforit-linux_amd64 && \
     chmod +x /usr/local/bin/waitforit

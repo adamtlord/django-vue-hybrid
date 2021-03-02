@@ -8,7 +8,11 @@ The `common` app within `django_web` consists of one TemplateView with some extr
 
 Vue is managed by vue-cli, which is installed globally within the container.
 
+Node modules and commands are managed by Yarn.
+
 Django and Vue are linked by `django-webpack-loader` and `webpack-bundle-tracker`. See the `common/index.html` template for use of the `{% render_bundle %}` tag.
+
+This project also uses [tailwindcss](https://tailwindcss.com/docs) as a [PostCSS](https://postcss.org/) plugin, along with plugins for css imports and nested rules. Tailwind is managed through the postcss-cli.
 
 The `vue.config.js` file does several important things:
 - configures devServer to use the port defined in `docker-compose.yml`
@@ -18,11 +22,14 @@ The `vue.config.js` file does several important things:
 
 ## Project Setup
 
-- Clone and `docker-compose up`
+- Clone project
+- `cp django_web/.env_example django_web/.env`
+- `docker-compose up`
 - ssh into `djangovue_web` container
-- `yarn install`
+- `yarn serve`
 
 ## Development
 Check out scripts defined in `package.json`
 
-- `yarn serve` will start both Django's dev server and vue-cli's dev server, configured for hot reloading
+- `yarn serve` will compile tailwindcss and start both Django's dev server and vue-cli's dev server, configured for hot reloading
+- Python packages are managed with [Poetry](https://python-poetry.org/). To use the Poetry cli within the container, you must first `source $HOME/.poetry/env`.
