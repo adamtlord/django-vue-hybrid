@@ -5,17 +5,21 @@
     <noscript>
         <strong>Please enable JavaScript to continue.</strong>
     </noscript>
-    <div id="app">There was a problem loading Vue</div>
+
+    <div id="app">There was a problem loading Vue.</div>
+
     <footer class="font-mono text-xl py-2 px-4">
         <p>Django context:</p>
         <ul>
             <li>user: {{ request.user }}</li>
             <li>path: {{ request.path }}</li>
             {% for key, value in extra_context.items %}
-        <li>{{ key }}: {{ value }}</li>
-        {% endfor %}</ul>
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
     </footer>
 {% endblock %}
+
 {% block bundlescripts %}
     {% render_bundle 'main' attrs="rel=preload" %}
     {% render_bundle 'about' attrs="rel=preload" %}
