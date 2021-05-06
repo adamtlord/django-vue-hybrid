@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+{% block title %}User List Example{% endblock %}
+{% block body %}
+<div class="container mx-auto my-8">
+  <div class="flex flex-col">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <h1 class="font-bold text-gray-900 text-3xl my-4"><span class="text-green-900">Django</span> Users</h1>
+        <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-md">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  First Name
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Name
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Username
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Email
+                </th>
+                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Last Login
+                </th>
+                <th scope="col"
+                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Is Staff
+                </th>
+                <th scope="col"
+                  class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Is Superuser
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              {% for user in user_list %}
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <div
+                      class="text-sm {% if user.first_name %}font-medium text-gray-900{% else %}font-normal text-gray-400{% endif %}">
+                      {{ user.first_name|default:"None" }}
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div
+                    class="text-sm {% if user.last_name %}font-medium text-gray-900{% else %}font-normal text-gray-400{% endif %}">
+                    {{ user.last_name|default:"None" }}
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="text-sm font-medium text-gray-900">
+                    {{ user.username }}
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  {% if user.email %}
+                  <div class="text-sm font-medium text-gray-900">
+                    <a href="#mailto:{{ user.email }}">{{ user.email }}</a>
+                  </div>
+                  {% else %}
+                  <div class="text-sm font-normal text-gray-400">
+                    None
+                  </div>
+                  {% endif %}
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <div
+                    class="text-sm {% if user.last_login %}font-medium text-gray-900{% else %}font-normal text-gray-400{% endif %}">
+                    {{ user.last_login|date:"SHORT_DATETIME_FORMAT"|default:"Never" }}
+                  </div>
+                </td>
+                <td class="px-6 py-4 text-center">
+                  {% if user.is_staff %}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto text-green-700" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  {% endif %}
+                </td>
+                <td class="px-6 py-4 text-center">
+                  {% if user.is_superuser %}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mx-auto text-green-700" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                      clip-rule="evenodd" />
+                  </svg>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

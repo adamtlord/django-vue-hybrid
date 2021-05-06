@@ -1,4 +1,5 @@
-/* Just an example */
-a {
-  color: #42b983;
+@layer base {
+  a {
+    @apply text-green-700 hover:underline;
+  }
 }
