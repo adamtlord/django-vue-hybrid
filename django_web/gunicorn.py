@@ -1,11 +1,11 @@
 import os, multiprocessing
 
 
-bind = '0.0.0.0:8000'
+bind = "0.0.0.0:8000"
 backlog = 512
 
 workers = multiprocessing.cpu_count() + 1
-worker_class = 'gevent'
+worker_class = "gevent"
 worker_connections = 32
 timeout = 120
 keepalive = 2
@@ -20,12 +20,14 @@ group = None
 tmp_upload_dir = None
 
 # Logging
-loglevel = 'info'
+loglevel = "info"
 
 capture_output = True
-errorlog = '-'
-accesslog = '-'
-access_log_format = '%({X-Forwarded-For}i)s %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+errorlog = "-"
+accesslog = "-"
+access_log_format = (
+    '%({X-Forwarded-For}i)s %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"'
+)
 
 
 def post_fork(server, worker):
@@ -49,6 +51,7 @@ def worker_int(worker):
 
     ## get traceback info
     import threading, sys, traceback
+
     id2name = dict([(th.ident, th.name) for th in threading.enumerate()])
     code = []
     for threadId, stack in sys._current_frames().items():
