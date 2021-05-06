@@ -30,6 +30,7 @@ The `vue.config.js` file does several important things:
 - ssh into `djangovue_web` container (eg `docker exec -it djangovue_web_1 /bin/bash`)
 - `yarn install`
 - `yarn serve`
+- As configured via docker-compose.yml, project will be running at `localhost:8010/`
 
 ## Development
 Check out scripts defined in `package.json`
