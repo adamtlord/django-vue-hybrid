@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "npm-run-all --parallel serve_js serve_css serve_python",
-    "build_css": "tailwind builds here ",
+    "build": "npm-run-all --parallel lint_js build_js build_css",
+    "build_css": "postcss ./static/css/tailwind.css -o ./static/css/styles.css",
     "build_js": "vue-cli-service build",
     "inspect_js": "vue-cli-service inspect",
     "lint_js": "vue-cli-service lint",
     "serve_css": "postcss ./static/css/tailwind.css -o ./static/css/styles.css",
     "serve_js": "vue-cli-service serve",
-    "serve_python": "python manage.py runserver 0.0.0.0:8000",
-    "spacer": "-----------------------------"
+    "serve_python": "python manage.py runserver 0.0.0.0:8000"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -21,7 +21,7 @@
     "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
