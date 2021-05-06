@@ -27,7 +27,8 @@ The `vue.config.js` file does several important things:
 - Clone project
 - `cp django_web/.env_example django_web/.env`
 - `docker-compose up`
-- ssh into `djangovue_web` container
+- ssh into `djangovue_web` container (eg `docker exec -it djangovue_web_1 /bin/bash`)
+- `yarn install`
 - `yarn serve`
 
 ## Development
